@@ -1,0 +1,10 @@
+
+{
+  "origins": [
+    "https://zhauniarovich.com",
+    "https://www.zhauniarovich.com"
+  ],
+  "originsRegex": [
+    "http:\/\/localhost:[0-9]+"
+  ]
+}
