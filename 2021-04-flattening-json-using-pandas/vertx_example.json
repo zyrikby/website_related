@@ -1,0 +1,60 @@
+[
+  {
+    "matches": [
+      {
+        "album": "Elephunk",
+        "artist": "Black Eyed Peas; Papa Roach",
+        "segments": [
+          {
+            "duration": 24.9375,
+            "que_offset": 0.0,
+            "ref_offset": 18.0
+          }
+        ],
+        "title": "Anxiety",
+        "type": "music",
+        "uid": 6475547275973858650
+      },
+      {
+        "imdb_id": 365957,
+        "segments": [
+          {
+            "duration": 24.9375,
+            "que_offset": 0.0,
+            "ref_offset": 3500.625
+          }
+        ],
+        "title": "You Got Served",
+        "type": "movie",
+        "uid": 1566530810344932800,
+        "year": 2004
+      }
+    ],
+    "media_type": "audio",
+    "source_path": "sample.mp4",
+    "source_uid": 1758730481226206085,
+    "status": "succeeded"
+  },
+  {
+    "matches": [
+      {
+        "imdb_id": 332452,
+        "segments": [
+          {
+            "duration": 21.0,
+            "que_offset": 0.0,
+            "ref_offset": 8608.5
+          }
+        ],
+        "title": "Troy",
+        "type": "movie",
+        "uid": 1342729426672482861,
+        "year": 2004
+      }
+    ],
+    "media_type": "video",
+    "source_path": "sample.mp4",
+    "source_uid": 1758730481226206085,
+    "status": "succeeded"
+  }
+] 

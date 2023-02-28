@@ -1,0 +1,28 @@
+FROM ubuntu:20.04 as BASE
+
+# install locale
+RUN apt-get update && \
+    apt-get install -y locales && \
+    rm -rf /var/lib/apt/lists/* && \
+    localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
+ENV LANG en_US.utf8 \
+
+# setting tzdata
+ENV TZ=Europe/Minsk
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+
+# install prerequisitues software for pyenv
+RUN apt-get update && \
+    apt-get install --no-install-recommends -y \
+        make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+
+
+
+FROM BASE as environment
+WORKDIR "$HOME/app/"
+COPY "./setup_python.sh" "./"
+
+RUN chmod +x "./setup_python.sh" && "./setup_python.sh"
+
+CMD ["/bin/bash"]

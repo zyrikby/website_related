@@ -1,0 +1,16 @@
+#!/bin/bash
+# Checks
+command -v pdflatex >/dev/null 2>&1 || { echo >&2 "Cannot find pdflatex. Try: 'sudo apt install texlive-full'. Aborting."; exit 1; }
+command -v pdfcrop >/dev/null 2>&1 || { echo >&2 "Cannot find pdfcrop. Try: 'sudo apt install texlive-full'. Aborting."; exit 1; }
+command -v convert >/dev/null 2>&1 || { echo >&2 "Failed, Try: apt install texlive-full. Aborting."; exit 1; }
+# Prepare
+filename="${1%.*}"
+temp_dir=$(cat /proc/sys/kernel/random/uuid | sed 's/[-]//g' | head -c 20; echo;)
+temp_dir="./$temp_dir" 
+if [ ! -d $temp_dir ]; then mkdir $temp_dir; fi
+# Conversions
+pdflatex --interaction=batchmode -jobname "$temp_dir/latex.temp" $1 > /dev/null
+pdfcrop "$temp_dir/latex.temp.pdf" "$temp_dir/crop.pdf" > /dev/null
+convert -density 300 "$temp_dir/crop.pdf" "$filename.png"  > /dev/null
+# Cleaning
+rm -r "$temp_dir"
